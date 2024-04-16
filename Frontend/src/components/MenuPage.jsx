@@ -1,57 +1,49 @@
 import React, { useState } from 'react';
+import "./menu.css";
+import { data } from "../pages/restApi.json";
+import Cart from './cart'; // Import the Cart component
 
 const MenuPage = () => {
-  // State to manage quantities of menu items
-  const [menuItems, setMenuItems] = useState([
-    { id: 1, name: 'Plain Dosa', quantity: 0 },
-    { id: 2, name: 'Masala Dosa', quantity: 0 },
-    { id: 3, name: 'Set Dosa', quantity: 0 }
-  ]);
-
-  // Function to handle incrementing quantity
-  const incrementQuantity = (id) => {
-    setMenuItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
+    return (
+        <section className='menu-page'>
+            <div className="container">
+                <div className="heading_section">
+                    <h1 className="heading">Explore our menu</h1>
+                    <p className='explore-menu-text'>Choose the best menu</p>
+                </div>
+                <div className='menu-sections'>
+                    <div className='menu-section'>
+                        <h2 className='menu-section-title'>MENU LIST</h2>
+                        <div className='explore-menu-list'>
+                            {data[0].menu_list.map(element => (
+                                <div key={element.id} className='explore-menu-list-item'>
+                                    <img src={element.image} alt="" />
+                                    <p>{element.title}</p>
+                                    <p>{element.id}</p> 
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className='menu-sections'>
+                    <div className='menu-section'>
+                        <h2 className='menu-section-title'>POPULAR DISHES</h2>
+                        <div className="dishes_container">
+                            {data[0].dishes.map(element => (
+                                <div className="card" key={element.id}>
+                                    <img src={element.image} alt={element.title} />
+                                    <h3>{element.title}</h3>
+                                    <button>{element.category}</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Render the Cart component */}
+            <Cart />
+        </section>
     );
-  };
-
-  // Function to handle decrementing quantity
-  const decrementQuantity = (id) => {
-    setMenuItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id && item.quantity > 0
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  // Calculate total number of items in the cart
-  const totalItems = menuItems.reduce((total, item) => total + item.quantity, 0);
-
-  return (
-    <div>
-      <h1>Menu</h1>
-      <div className="menu-items">
-        {menuItems.map((item) => (
-          <div key={item.id} className="menu-item">
-            <span>{item.name}</span>
-            <button onClick={() => incrementQuantity(item.id)}>+1</button>
-            <span>{item.quantity}</span>
-            <button onClick={() => decrementQuantity(item.id)}>-1</button>
-          </div>
-        ))}
-      </div>
-      <div className="cart-icon">
-        <span role="img" aria-label="Cart">
-          🛒
-        </span>
-        <span>{totalItems}</span>
-      </div>
-    </div>
-  );
-};
+}
 
 export default MenuPage;

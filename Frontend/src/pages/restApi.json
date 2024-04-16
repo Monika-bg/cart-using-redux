@@ -163,7 +163,66 @@
                 "title": "RESERVATION",
                 "link": "reservation"
             }
-        ]
+        ],
+        
+            "menu_list": [
+              {
+                "id": "lunch",
+                "image": "./lunch.jpeg"
+              },
+              {
+                "id": "Breakfast",
+                "image": "./Breakfast.jpeg"
+              },
+              {
+                "id": "Deserts",
+                "image": "./Deserts.jpeg"
+              },
+              {
+                "id": "Drinks",
+                "image": "./drinks.jpeg"
+              }
+            ],
+              "food_list": [
+                {
+                  "id": "1",
+                  "name" : "dosa",
+                  "image": "./lu.jpeg",
+                  "price" : 60,
+                  "category" : "Breakfast"
+                },
+                {
+                    "id": "2",
+                    "name" : "Idli",
+                    "image": "./lu.jpeg",
+                    "price" : 40,
+                    "category" : "Breakfast"
+                  },
+                  {
+                    "id": "3",
+                    "name" : "Poori",
+                    "image": "./lu.jpeg",
+                    "price" : 60,
+                    "category" : "Breakfast"
+                  },
+                  {
+                    "id": "4",
+                    "name" : "Bisibele Bath",
+                    "image": "./lu.jpeg",
+                    "price" : 60,
+                    "category" : "Breakfast"
+                  },
+                  {
+                    "id": "5",
+                    "name" : "palav",
+                    "image": "./lu.jpeg",
+                    "price" : 40,
+                    "category" : "Breakfast"
+                  }
+              ]
+               
+      
+          
     
     } 
     ]

@@ -11,7 +11,7 @@ const Reservation = () => {
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [phone, setPhone] = useState(0);
+  const [phone, setPhone] = useState("");
   const navigate = useNavigate();
 
   const handleReservation = async (e) => {
@@ -19,7 +19,7 @@ const Reservation = () => {
     try {
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/Reservation/send",
-        { firstName, lastName, email, phone, date, time },
+        { firstName, lastName, email, phone: parseInt(phone), date, time },
         {
           headers: {
             "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Reservation = () => {
       toast.success(data.message);
       setFirstName("");
       setLastName("");
-      setPhone(0);
+      setPhone("");
       setEmail("");
       setTime("");
       setDate("");
@@ -88,7 +88,7 @@ const Reservation = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
-                  type="number"
+                  type="text"
                   placeholder="Phone"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}

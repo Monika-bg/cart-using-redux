@@ -13,10 +13,11 @@ import Footer from '../components/Footer'
     <HeroSection />
     <About/>
     <Qualities/>
-    <Menu/>
+    
     <WhoAreWe/>
     <Reservation/>
     <Footer/>
+    
     </>
          )
         
