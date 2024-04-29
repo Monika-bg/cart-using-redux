@@ -4,7 +4,8 @@ import { Toaster } from 'react-hot-toast';
 import Home from './pages/Home';
 import Success from './pages/Success';
 import NotFound from './pages/NotFound';
-import MenuPage from './components/MenuPage.jsx'
+import MenuPage from './components/MenuPage.jsx';
+import Login from './components/Login.jsx'; // Import the Login component
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/success" element={<Success />} />
-        <Route path="/menu" element={<MenuPage />} /> {/* Route for MenuPage */}
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/login" element={<Login />} /> {/* Route for Login */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
