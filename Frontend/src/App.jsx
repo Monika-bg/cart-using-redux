@@ -1,11 +1,14 @@
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Home from './pages/Home';
 import Success from './pages/Success';
 import NotFound from './pages/NotFound';
-import MenuPage from './components/MenuPage.jsx';
-import Login from './components/Login.jsx'; // Import the Login component
+import MenuPage from './components/MenuPage';
+import Login from './components/Login';
+import QRCodeModal from './components/QrCodeModal'; // Import the QRCodePage component
+import DisplayQRCodePage from './components/DisplayQRCodePage'; // Import the DisplayQRCodePage component
 
 const App = () => {
   return (
@@ -14,7 +17,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/success" element={<Success />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/login" element={<Login />} /> {/* Route for Login */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/qrcode" element={<QRCodeModal />} /> {/* Route for QRCodePage */}
+        <Route path="/displayQRCode" element={<DisplayQRCodePage />} /> {/* Route for DisplayQRCodePage */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />

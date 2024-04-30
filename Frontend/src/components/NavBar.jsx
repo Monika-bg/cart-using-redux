@@ -3,6 +3,7 @@ import { data } from "../pages/restApi.json";
 import { Link } from "react-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link as RouterLink } from "react-router-dom";
+import QRCodePage from "./QrCodeModal";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -27,6 +28,7 @@ const Navbar = () => {
           </div>
           {/* Updated RouterLink to point to the login page */}
           <RouterLink to="/login" className="menuBtn">OUR MENU</RouterLink>
+          <QRCodePage/>
         </div>
         <div className="hamburger" onClick={() => setShow(!show)}>
           <GiHamburgerMenu/>
