@@ -17,6 +17,7 @@ import Footer from '../components/Footer'
     <WhoAreWe/>
     <Reservation/>
     <Footer/>
+   
     
     </>
          )

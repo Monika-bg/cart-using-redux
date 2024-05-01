@@ -164,6 +164,11 @@
                 "id": 5,
                 "title": "RESERVATION",
                 "link": "reservation"
+            },
+            {
+                "id":6,
+                "title":"VIEW MENU",
+                "link":"DisplayMenu"
             }
         ],
         

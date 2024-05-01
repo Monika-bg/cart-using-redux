@@ -7,8 +7,8 @@ import Success from './pages/Success';
 import NotFound from './pages/NotFound';
 import MenuPage from './components/MenuPage';
 import Login from './components/Login';
-import QRCodeModal from './components/QrCodeModal'; // Import the QRCodePage component
-import DisplayQRCodePage from './components/DisplayQRCodePage'; // Import the DisplayQRCodePage component
+import QRCodeModal from './components/QrCodeModal';
+import DisplayMenu from './components/DisplayMenu'; // Import the DisplayMenu component
 
 const App = () => {
   return (
@@ -18,8 +18,8 @@ const App = () => {
         <Route path="/success" element={<Success />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/qrcode" element={<QRCodeModal />} /> {/* Route for QRCodePage */}
-        <Route path="/displayQRCode" element={<DisplayQRCodePage />} /> {/* Route for DisplayQRCodePage */}
+        <Route path="/qrcode" element={<QRCodeModal />} />
+        <Route path="/displayMenu" element={<DisplayMenu />} /> {/* Add route for DisplayMenu */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
