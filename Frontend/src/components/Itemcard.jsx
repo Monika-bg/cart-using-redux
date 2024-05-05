@@ -1,22 +1,52 @@
-import React from 'react';
-import { useCart } from 'react-use-cart';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { MdDelete } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import {
+  removeFromCart,
+  incrementQty,
+  decrementQty,
+} from "../redux/slices/CartSlice";
+import { toast } from "react-hot-toast";
 
-const Itemcard = (props) => {
-  const { addItem } = useCart();
+const ItemCard = ({ id, name, qty, price, img }) => {
+  const dispatch = useDispatch();
 
   return (
-    <div className='col-11 col-md-6 col-lg-3 mx-0 mb-4'>
-      <div className='card p-0 overflow-hidden h-100 shadow'>
-        <img src={props.img} className='card-img-top img-fluid' alt={props.title} style={{ width: 302, height: 302 }} />
-        <div className='card-body'>
-          <h5 className='card-title'>{props.title}</h5>
-          <p className='card-text'>{props.desc}</p>
-          <button className='btn btn-success' onClick={() => addItem(props.item)}>Add to Cart</button>
+    <div className="flex gap-2 shadow-md rounded-lg p-2 mb-3">
+      <MdDelete
+        onClick={() => {
+          dispatch(removeFromCart({ id, img, name, price, qty }));
+          toast(`${name} Removed!`, {
+            icon: "👋",
+          });
+        }}
+        className="absolute right-7 text-gray-600 cursor-pointer"
+      />
+      <img src={img} alt="" className="w-[50px] h-[50px] " />
+      <div className="leading-5">
+        <h2 className="font-bold text-gray-800">{name}</h2>
+        <div className="flex justify-between ">
+          <span className="text-green-500 font-bold">₹{price}</span>
+          <div className="flex justify-center items-center gap-2 absolute right-7">
+            <AiOutlineMinus
+              onClick={() =>
+                qty > 1 ? dispatch(decrementQty({ id })) : (qty = 0)
+              }
+              className="border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer"
+            />
+            <span>{qty}</span>
+            <AiOutlinePlus
+              onClick={() =>
+                qty >= 1 ? dispatch(incrementQty({ id })) : (qty = 0)
+              }
+              className="border-2 border-gray-600 text-gray-600 hover:text-white hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer"
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Itemcard;
+export default ItemCard;
